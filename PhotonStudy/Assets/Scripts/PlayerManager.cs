@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon;
+using ExitGames.Demos.DemoAnimator;
 
-public class PlayerManager : PunBehaviour
+public class PlayerManager : PunBehaviour, IPunObservable
 {
     [SerializeField] private GameObject beams;
 
@@ -28,6 +29,18 @@ public class PlayerManager : PunBehaviour
         Health -= 0.1f * Time.deltaTime;
     }
 
+    private void ProcessInputs()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if ((!isFire)) isFire = true;
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if ((isFire)) isFire = false;
+        }
+    }
+
     private void Awake()
     {
         if(beams == null)
@@ -40,23 +53,26 @@ public class PlayerManager : PunBehaviour
         }
     }
 
-    private void ProcessInputs()
+    private void Start()
     {
-        if (Input.GetButtonDown("Fire1")) 
+        CameraWork cameraWork = this.GetComponent<CameraWork>();
+        if(cameraWork != null)
         {
-            if ((!isFire)) isFire = true;
+            if (photonView.isMine) cameraWork.OnStartFollowing();
         }
-        if (Input.GetButtonUp("Fire1"))
+        else
         {
-            if ((isFire)) isFire = false;
+            Debug.LogError("<Color==red>***** 카메라 컴포넌트 없음 *****</Color>");
         }
     }
+
 
     private void Update()
     {
         if (photonView.isMine)
         {
             ProcessInputs();
+
             if(Health <= 0f)
             {
                 GameManager.Instance.LeaveRoom();
@@ -67,6 +83,20 @@ public class PlayerManager : PunBehaviour
             {
                 beams.SetActive(isFire);
             }
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(isFire);
+            stream.SendNext(Health);
+        }
+        else
+        {
+            this.isFire = (bool)stream.ReceiveNext();
+            this.Health = (float)stream.ReceiveNext();
         }
     }
 }

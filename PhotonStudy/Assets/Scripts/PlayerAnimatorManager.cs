@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
 
-public class PlayerAnimatorManager : MonoBehaviour
+public class PlayerAnimatorManager : PunBehaviour
 {
     [SerializeField]private Animator animator;
     [SerializeField] private float directionDampTime = 0.2f;
@@ -32,6 +33,11 @@ public class PlayerAnimatorManager : MonoBehaviour
 
     private void Update()
     {
+        if(photonView.isMine == false && PhotonNetwork.connected == true)
+        {
+            return;
+        }
+
         if (!animator) return;
 
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
