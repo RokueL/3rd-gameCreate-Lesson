@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410815993}
   m_LocalRotation: {x: -0.5511754, y: 0.44295117, z: 0.5511754, w: 0.44295117}
-  m_LocalPosition: {x: -0.489, y: 2.022, z: 0.064}
+  m_LocalPosition: {x: -0.5, y: 2.071, z: 0.064}
   m_LocalScale: {x: 0.01, y: 0.009999997, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 14, y: 1, z: 1}
+  m_Center: {x: 6.5, y: 0, z: 0}
 --- !u!1 &1191137180
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 1191137181}
   - component: {fileID: 1191137184}
   - component: {fileID: 1191137183}
-  - component: {fileID: 1191137182}
   m_Layer: 0
   m_Name: Beam Right
   m_TagString: Untagged
@@ -124,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191137180}
   m_LocalRotation: {x: -0.5511754, y: 0.44295117, z: 0.5511754, w: 0.44295117}
-  m_LocalPosition: {x: -0.489, y: 2.022, z: -0.058699995}
+  m_LocalPosition: {x: -0.5000002, y: 2.0709999, z: -0.058699995}
   m_LocalScale: {x: 0.01, y: 0.009999997, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,19 +180,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1191137182
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191137180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1313252325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1569,7 @@ GameObject:
   - component: {fileID: 1267763922693062315}
   - component: {fileID: 6114246385939715707}
   - component: {fileID: 1698728254}
+  - component: {fileID: 1698728255}
   m_Layer: 0
   m_Name: My Robot Kyle
   m_TagString: Untagged
@@ -1676,6 +1663,20 @@ MonoBehaviour:
   heightSmoothLag: 0.3
   centerOffset: {x: 0, y: 4, z: 0}
   followOnStart: 1
+--- !u!114 &1698728255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2992109692664795860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a400dbe906e0a408b70f00ec496ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beams: {fileID: 1313252325}
+  Health: 1
 --- !u!1 &2992109692664795862
 GameObject:
   m_ObjectHideFlags: 0

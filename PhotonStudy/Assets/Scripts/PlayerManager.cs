@@ -54,10 +54,19 @@ public class PlayerManager : PunBehaviour
 
     private void Update()
     {
-        ProcessInputs();
-        if(beams != null && isFire != beams.activeInHierarchy)
+        if (photonView.isMine)
         {
-            beams.SetActive(isFire);
+            ProcessInputs();
+            if(Health <= 0f)
+            {
+                GameManager.Instance.LeaveRoom();
+            }
+
+
+            if (beams != null && isFire != beams.activeInHierarchy)
+            {
+                beams.SetActive(isFire);
+            }
         }
     }
 }

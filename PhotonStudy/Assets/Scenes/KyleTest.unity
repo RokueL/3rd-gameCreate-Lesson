@@ -217,11 +217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1313252325 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1313252325, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-  m_PrefabInstance: {fileID: 2070285131}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380427909
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,24 +399,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1698728249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2992109692664795860, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-  m_PrefabInstance: {fileID: 2070285131}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1698728255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698728249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3a400dbe906e0a408b70f00ec496ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beams: {fileID: 1313252325}
 --- !u!1001 &2070285131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,30 +406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 410815994, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 410815994, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.071
-      objectReference: {fileID: 0}
-    - target: {fileID: 410815995, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_Size.x
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 410815995, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_Center.x
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191137181, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191137181, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.0709999
-      objectReference: {fileID: 0}
     - target: {fileID: 2992109692664795860, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
       propertyPath: m_Name
       value: My Robot Kyle
@@ -501,6 +454,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1191137182, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}

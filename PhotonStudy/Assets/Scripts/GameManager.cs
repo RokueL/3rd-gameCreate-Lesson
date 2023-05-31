@@ -6,11 +6,24 @@ using Photon;
 using Photon.Realtime;
 public class GameManager : PunBehaviour
 {
-    #region Photon Callbacks
+    public static GameManager Instance;
 
+    private void Start()
+    {
+    }
+
+    #region Photon Callbacks
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene(0);
+    }
+    public override void OnJoinedRoom()
+    {
+        if(PhotonNetwork.room.PlayerCount == 1)
+        {
+            Debug.Log("<Color==blue>PUN room for 1을 로딩합니다</Color>");
+            PhotonNetwork.LoadLevel("room1");
+        }
     }
 
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
