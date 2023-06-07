@@ -27,7 +27,7 @@ public class PlayerAnimatorManager : PunBehaviour
             Debug.LogError("NULL Animator");
         }
        JumpAnimHash = Animator.StringToHash("Jump");
-       SpeedAnimHash = Animator.StringToHash("moveSpeed");
+       SpeedAnimHash = Animator.StringToHash("Speed");
        DirectionAnimHash = Animator.StringToHash("Direction");
     }
 

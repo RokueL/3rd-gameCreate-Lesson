@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon;
 using ExitGames.Demos.DemoAnimator;
 
-public class PlayerManager : PunBehaviour, IPunObservable
+public class PlayerManager :  PunBehaviour, IPunObservable
 {
+    [Tooltip("로컬플레이어" )]
+    public static GameObject LocalPlayerInstance;
+
     [SerializeField] private GameObject beams;
+    [SerializeField] private GameObject playerUIPrefab;
 
     [Tooltip("플레이어의 현재 HP")]
     public float Health = 1f;
-
+    public float maxHealth = 1f;
     private bool isFire;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -51,6 +57,11 @@ public class PlayerManager : PunBehaviour, IPunObservable
         {
             beams.SetActive(false);
         }
+        if (photonView.isMine)
+        {
+            PlayerManager.LocalPlayerInstance = this.gameObject;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -64,10 +75,43 @@ public class PlayerManager : PunBehaviour, IPunObservable
         {
             Debug.LogError("<Color==red>***** 카메라 컴포넌트 없음 *****</Color>");
         }
+
+
+#if UNITY_5_4_OR_NEWER
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) => {
+            this.CalledOnLevelWasLoaded(scene.buildIndex);
+        };
+#endif
+        if(playerUIPrefab != null)
+        {
+            var uiGo = Instantiate(playerUIPrefab);
+            uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogError("<Color=red>**** playerUIPrefab Missing ****</Color>",this);
+        }
+    }
+
+#if UNITY_5_4_OR_NEWER
+    private void OnLevelWasLoaded(int level)
+{
+    this.CalledOnLevelWasLoaded(level);
+}
+#endif
+private void CalledOnLevelWasLoaded(int level)
+{
+    if(!Physics.Raycast(transform.position, -Vector3.up, 5f))
+    {
+        transform.position = new Vector3(0, 5, 0);
+    }
+
+        var uiGo = Instantiate(playerUIPrefab);
+        uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
 
 
-    private void Update()
+private void Update()
     {
         if (photonView.isMine)
         {

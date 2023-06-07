@@ -406,6 +406,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 524600362756660808, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524600362756660808, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
+      propertyPath: instantiationId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2992109692664795860, guid: 433222cf5383ec54bbc8648b6ba415d2, type: 3}
       propertyPath: m_Name
       value: My Robot Kyle

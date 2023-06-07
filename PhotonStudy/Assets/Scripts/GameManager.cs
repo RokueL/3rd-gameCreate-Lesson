@@ -8,8 +8,31 @@ public class GameManager : PunBehaviour
 {
     public static GameManager Instance;
 
+    [Tooltip("Set using player prefab")]
+    public GameObject playerPrefab;
     private void Start()
     {
+        Instance = this;
+
+        if (playerPrefab == null)
+        {
+            Debug.LogError("<Color=red>**** player prefab is missing ****</Color>");
+        }
+        else
+        {
+            Debug.Log($"We are Instantiating LocalPlayer from {SceneManager.GetActiveScene().name}");
+
+            if (PlayerManager.LocalPlayerInstance == null)
+            {
+                PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0, 5, 0), Quaternion.identity, 0);
+
+            }
+            else
+            {
+                Debug.Log($"Ignoring scene load for {SceneManager.GetActiveScene().name}");
+            }
+        }
+
     }
 
     #region Photon Callbacks
