@@ -83,11 +83,9 @@ public class Launcher : PunBehaviour
         Debug.Log("Connected On Master....");
         if (isConnecting)
         {
-            //PhotonNetwork.JoinRandomRoom();
+            PhotonNetwork.JoinRandomRoom();
 
-            PhotonNetwork.CreateRoom(null,
-                  new RoomOptions { MaxPlayers = this.maxPlayersPerRoom },
-                  TypedLobby.Default);
+
         }
     }
 
@@ -105,7 +103,7 @@ public class Launcher : PunBehaviour
         controlPanel.SetActive(true);
     }
 
-    public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
+    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
     {
         Debug.Log("Pun random join failed");
         PhotonNetwork.CreateRoom(null, 
